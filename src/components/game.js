@@ -1,7 +1,8 @@
 const { Console } = require('@woowacourse/mission-utils');
 const Computer = require('./computer');
 const Validation = require('./validation');
-const { PROMPT, SUCCESS, RESTART, END } = require('../constant/constant');
+const printResult = require('./print');
+const { PROMPT, RESTART, END } = require('../constant/constant');
 
 class Game {
   constructor() {
@@ -35,35 +36,7 @@ class Game {
   getResult(numbers) {
     this.setStrike(numbers);
     this.setBall(numbers);
-    this.print();
-  }
-
-  print() {
-    if (this.strike === 3) {
-      Console.print('3스트라이크');
-      Console.print(SUCCESS);
-      return this;
-    }
-
-    if (this.strike === 0 && this.ball === 0) {
-      Console.print('낫싱');
-      return this;
-    }
-
-    if (this.strike > 0 && this.ball > 0) {
-      Console.print(`${this.ball}볼 ${this.strike}스트라이크`);
-      return this;
-    }
-
-    if (this.ball === 0) {
-      Console.print(`${this.strike}스트라이크`);
-      return this;
-    }
-
-    if (this.strike === 0) {
-      Console.print(`${this.ball}볼`);
-      return this;
-    }
+    printResult(this.strike, this.ball);
   }
 
   replay() {
