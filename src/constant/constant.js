@@ -6,4 +6,11 @@ const MESSAGE = {
   END: '게임 종료',
 };
 
-module.exports = MESSAGE;
+const PRINT = {
+  ALL_STRIKE: '3스트라이크',
+  NOTHING: '낫싱',
+  BALL_STRIKE: (ball, strike) => `${ball}볼 ${strike}스트라이크`,
+  STRIKE: (strike) => `${strike}스트라이크`,
+  BALL: (ball) => `${ball}볼`,
+};
+module.exports = { MESSAGE, PRINT };

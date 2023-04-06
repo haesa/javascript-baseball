@@ -1,30 +1,30 @@
 const { Console } = require('@woowacourse/mission-utils');
-const { SUCCESS } = require('../constant/constant');
+const { MESSAGE, PRINT } = require('../constant/constant');
 
 function printResult(strike, ball) {
   if (strike === 3) {
-    Console.print('3스트라이크');
-    Console.print(SUCCESS);
+    Console.print(PRINT.ALL_STRIKE);
+    Console.print(MESSAGE.SUCCESS);
     return;
   }
 
   if (strike === 0 && ball === 0) {
-    Console.print('낫싱');
+    Console.print(PRINT.NOTHING);
     return;
   }
 
   if (strike > 0 && ball > 0) {
-    Console.print(`${ball}볼 ${strike}스트라이크`);
+    Console.print(PRINT.BALL_STRIKE(ball, strike));
     return;
   }
 
   if (ball === 0) {
-    Console.print(`${strike}스트라이크`);
+    Console.print(PRINT.STRIKE(strike));
     return;
   }
 
   if (strike === 0) {
-    Console.print(`${ball}볼`);
+    Console.print(PRINT.BALL(ball));
     return;
   }
 }

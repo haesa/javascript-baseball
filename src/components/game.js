@@ -2,7 +2,7 @@ const { Console } = require('@woowacourse/mission-utils');
 const Computer = require('./computer');
 const Validation = require('./validation');
 const printResult = require('./print');
-const { PROMPT, RESTART, END } = require('../constant/constant');
+const { MESSAGE } = require('../constant/constant');
 
 class Game {
   #computer;
@@ -40,7 +40,7 @@ class Game {
   }
 
   replay() {
-    Console.print(RESTART);
+    Console.print(MESSAGE.RESTART);
 
     Console.readLine('', (input) => {
       if (input === '1') {
@@ -50,14 +50,14 @@ class Game {
 
       if (input === '2') {
         Console.close();
-        Console.print(END);
+        Console.print(MESSAGE.END);
         return;
       }
     });
   }
 
   readAnswer() {
-    Console.readLine(PROMPT, (input) => {
+    Console.readLine(MESSAGE.PROMPT, (input) => {
       const numbers = input //
         .split('')
         .map(Number);
