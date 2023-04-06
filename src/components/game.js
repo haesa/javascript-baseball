@@ -25,12 +25,13 @@ class Game {
   setBall(numbers) {
     const baseballNumber = this.computer.baseballNumber;
 
-    this.ball =
-      numbers.reduce(
-        (count, number) =>
-          baseballNumber.includes(number) ? count + 1 : count,
-        0
-      ) - this.strike;
+    this.ball = numbers.reduce(
+      (count, number, index) =>
+        baseballNumber.includes(number) && number !== baseballNumber[index]
+          ? count + 1
+          : count,
+      0
+    );
   }
 
   getResult(numbers) {
