@@ -1,3 +1,10 @@
+const ERROR = {
+  LENGTH: 'numbers length must be 3.',
+  INTEGER: 'number must be integer',
+  RANGE: 'number must be between 1 and 9, inclusive.',
+  DUPLICATION: 'numbers does not allow duplication.',
+};
+
 const MESSAGE = {
   START: '숫자 야구 게임을 시작합니다.',
   PROMPT: '숫자를 입력해주세요 : ',
@@ -13,4 +20,4 @@ const PRINT = {
   STRIKE: (strike) => `${strike}스트라이크`,
   BALL: (ball) => `${ball}볼`,
 };
-module.exports = { MESSAGE, PRINT };
+module.exports = { ERROR, MESSAGE, PRINT };
