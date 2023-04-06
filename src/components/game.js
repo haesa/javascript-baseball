@@ -62,7 +62,7 @@ class Game {
         .split('')
         .map(Number);
 
-      new Validation().validateInput(numbers);
+      new Validation(numbers).validateInput();
       this.getResult(numbers);
 
       if (this.#strike !== 3) {
