@@ -5,25 +5,28 @@ const printResult = require('./print');
 const { PROMPT, RESTART, END } = require('../constant/constant');
 
 class Game {
+  #computer;
+  #validation;
+  #strike;
+  #ball;
   constructor() {
-    this.computer;
-    this.validation = new Validation();
-    this.strike = 0;
-    this.ball = 0;
+    this.#validation = new Validation();
+    this.#strike = 0;
+    this.#ball = 0;
   }
 
   setStrike(numbers) {
-    this.strike = numbers.reduce(
+    this.#strike = numbers.reduce(
       (count, number, index) =>
-        number === this.computer.baseballNumber[index] ? count + 1 : count,
+        number === this.#computer.baseballNumber[index] ? count + 1 : count,
       0
     );
   }
 
   setBall(numbers) {
-    const baseballNumber = this.computer.baseballNumber;
+    const baseballNumber = this.#computer.baseballNumber;
 
-    this.ball = numbers.reduce(
+    this.#ball = numbers.reduce(
       (count, number, index) =>
         baseballNumber.includes(number) && number !== baseballNumber[index]
           ? count + 1
@@ -35,7 +38,7 @@ class Game {
   getResult(numbers) {
     this.setStrike(numbers);
     this.setBall(numbers);
-    printResult(this.strike, this.ball);
+    printResult(this.#strike, this.#ball);
   }
 
   replay() {
@@ -61,10 +64,10 @@ class Game {
         .split('')
         .map(Number);
 
-      this.validation.validateInput(numbers);
+      this.#validation.validateInput(numbers);
       this.getResult(numbers);
 
-      if (this.strike !== 3) {
+      if (this.#strike !== 3) {
         this.readAnswer();
         return;
       }
@@ -74,7 +77,7 @@ class Game {
   }
 
   start() {
-    this.computer = new Computer();
+    this.#computer = new Computer();
     this.readAnswer();
   }
 }
