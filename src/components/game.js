@@ -6,11 +6,9 @@ const { PROMPT, RESTART, END } = require('../constant/constant');
 
 class Game {
   #computer;
-  #validation;
   #strike;
   #ball;
   constructor() {
-    this.#validation = new Validation();
     this.#strike = 0;
     this.#ball = 0;
   }
@@ -64,7 +62,7 @@ class Game {
         .split('')
         .map(Number);
 
-      this.#validation.validateInput(numbers);
+      new Validation().validateInput(numbers);
       this.getResult(numbers);
 
       if (this.#strike !== 3) {
