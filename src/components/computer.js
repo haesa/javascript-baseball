@@ -1,28 +1,29 @@
 const { Random } = require('@woowacourse/mission-utils');
 
 class Computer {
+  #baseballNumber;
   constructor() {
-    this.baseballNumber;
+    this.#baseballNumber;
   }
 
   init() {
-    this.baseballNumber = [];
+    this.#baseballNumber = [];
   }
 
   pickNumber() {
     this.init();
 
-    while (this.baseballNumber.length < 3) {
+    while (this.#baseballNumber.length < 3) {
       const number = Random.pickNumberInRange(1, 9);
 
-      if (!this.baseballNumber.includes(number)) {
-        this.baseballNumber.push(number);
+      if (!this.#baseballNumber.includes(number)) {
+        this.#baseballNumber.push(number);
       }
     }
   }
 
   getNumber() {
-    return this.baseballNumber;
+    return this.#baseballNumber;
   }
 }
 
