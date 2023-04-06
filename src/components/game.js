@@ -5,7 +5,7 @@ const { PROMPT, SUCCESS, RESTART, END } = require('../constant/constant');
 
 class Game {
   constructor() {
-    this.computer = new Computer();
+    this.computer;
     this.validation = new Validation();
     this.strike = 0;
     this.ball = 0;
@@ -102,6 +102,7 @@ class Game {
   }
 
   start() {
+    this.computer = new Computer();
     this.computer.pickNumber();
     this.readAnswer();
   }
