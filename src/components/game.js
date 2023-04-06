@@ -13,11 +13,9 @@ class Game {
   }
 
   setStrike(numbers) {
-    const baseballNumber = this.computer.baseballNumber;
-
     this.strike = numbers.reduce(
       (count, number, index) =>
-        number === baseballNumber[index] ? count + 1 : count,
+        number === this.computer.baseballNumber[index] ? count + 1 : count,
       0
     );
   }
