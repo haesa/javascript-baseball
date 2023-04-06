@@ -12,20 +12,24 @@ class Game {
   }
 
   setStrike(numbers) {
-    const baseballNumber = this.computer.getNumber();
+    const baseballNumber = this.computer.baseballNumber;
 
     this.strike = numbers.reduce(
-      (count, number, index) => (number === baseballNumber[index] ? count + 1 : count),
+      (count, number, index) =>
+        number === baseballNumber[index] ? count + 1 : count,
       0
     );
   }
 
   setBall(numbers) {
-    const baseballNumber = this.computer.getNumber();
+    const baseballNumber = this.computer.baseballNumber;
 
     this.ball =
-      numbers.reduce((count, number) => (baseballNumber.includes(number) ? count + 1 : count), 0) -
-      this.strike;
+      numbers.reduce(
+        (count, number) =>
+          baseballNumber.includes(number) ? count + 1 : count,
+        0
+      ) - this.strike;
   }
 
   getResult(numbers) {
@@ -65,7 +69,7 @@ class Game {
   replay() {
     Console.print(RESTART);
 
-    Console.readLine('', input => {
+    Console.readLine('', (input) => {
       if (input === '1') {
         this.start();
         return;
@@ -80,7 +84,7 @@ class Game {
   }
 
   readAnswer() {
-    Console.readLine(PROMPT, input => {
+    Console.readLine(PROMPT, (input) => {
       const numbers = input //
         .split('')
         .map(Number);

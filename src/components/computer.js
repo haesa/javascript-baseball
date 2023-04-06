@@ -22,7 +22,7 @@ class Computer {
     }
   }
 
-  getNumber() {
+  get baseballNumber() {
     return this.#baseballNumber;
   }
 }
