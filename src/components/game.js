@@ -103,7 +103,6 @@ class Game {
 
   start() {
     this.computer = new Computer();
-    this.computer.pickNumber();
     this.readAnswer();
   }
 }
