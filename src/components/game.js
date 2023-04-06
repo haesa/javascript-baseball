@@ -13,7 +13,7 @@ class Game {
     this.#ball = 0;
   }
 
-  setStrike(numbers) {
+  calculateStrike(numbers) {
     this.#strike = numbers.reduce(
       (count, number, index) =>
         number === this.#computer.baseballNumber[index] ? count + 1 : count,
@@ -21,7 +21,7 @@ class Game {
     );
   }
 
-  setBall(numbers) {
+  calculateBall(numbers) {
     const baseballNumber = this.#computer.baseballNumber;
 
     this.#ball = numbers.reduce(
@@ -34,8 +34,8 @@ class Game {
   }
 
   getResult(numbers) {
-    this.setStrike(numbers);
-    this.setBall(numbers);
+    this.calculateStrike(numbers);
+    this.calculateBall(numbers);
     printResult(this.#strike, this.#ball);
   }
 
